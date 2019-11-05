@@ -202,8 +202,6 @@ print("***OBJECTIVE***: You must sink the enemy fleet using skill and some guess
 set_up_all_ships(player_goals, ai_ship_to_length)
 set_up_all_ships(ai_goals, player_ship_to_length)
 
-print_boards(player_goals, ai_goals)
-
 # Loops until either the player's fleet or ai's fleet is destroyed.
 while player_lives > 0 and ai_lives > 0:
     # player's turn
