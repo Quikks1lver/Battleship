@@ -124,7 +124,7 @@ def place_ship(b, symbol, length, row, column, orientation):
         else:
             b[row][column + i] = symbol
 
-# Sets up all ships on a given board and its fleet of ships (ship to length dictionary).
+# Sets up all ships on a given board (fleet is a ship to length dictionary).
 def set_up_all_ships(b, fleet):
     for k in fleet:
         ship_orientation, ship_row, ship_column = randomize()
@@ -133,7 +133,7 @@ def set_up_all_ships(b, fleet):
         place_ship(b, k, fleet[k], ship_row, ship_column, ship_orientation)
 
 # Gets user input for coordinates. Subtracts 1 from raw input because of how arrays'
-# indices work in Python (0-9 rather 1-10).
+# indices work in Python (0-9 rather than 1-10).
 def get_input_from_player():
     temp_row = int(input())
     temp_col = int(input())
@@ -154,6 +154,7 @@ def invalid_input(b, row, column):
         return 1
     return 0
 
+# Changes the goals board and normal board based on the row and column coordinate for a torpedo attack.
 def alter_boards(board, goals, lives, ship_to_length, row, column):
     if goals[row][column] != '~':
         ship_to_length[goals[row][column]] -= 1
@@ -188,6 +189,7 @@ while ready_or_not.lower() != "go":
     print("The fleet awaits your command. Type \"go\" to commence the game.")
     ready_or_not = input()
 
+# Creates all boards.
 player_board = get_new_board()
 ai_board = get_new_board()
 player_goals = get_new_board()
@@ -196,13 +198,13 @@ ai_goals = get_new_board()
 print_boards(player_board, ai_board)
 print("***OBJECTIVE***: You must sink the enemy fleet using skill and some guessing. Good luck, admiral!")
 
-# Randomly set up ships, for both the player and the ai.
+# Randomly sets up ships, for both the player and the ai.
 set_up_all_ships(player_goals, ai_ship_to_length)
 set_up_all_ships(ai_goals, player_ship_to_length)
 
 print_boards(player_goals, ai_goals)
 
-# Code that will loop until either the player's fleet or ai's fleet is destroyed.
+# Loops until either the player's fleet or ai's fleet is destroyed.
 while player_lives > 0 and ai_lives > 0:
     # player's turn
     if turn % 2 == 1:
@@ -220,7 +222,7 @@ while player_lives > 0 and ai_lives > 0:
             input_row, input_column = get_ai_input()
         # at this point, input has been verified, and row and column coordinates are valid
         player_lives = alter_boards(ai_board, ai_goals, player_lives, player_ship_to_length, input_row, input_column)
-
+    # Prints both boards after the ai's turn (thus, each player will have gone once before the boards are printed).
     if turn % 2 == 0:
         print_boards(player_board, ai_board)
     turn += 1
