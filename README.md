@@ -6,5 +6,5 @@ Simple human v. computer Battleship text-based Battleship game, coded in Python.
 To run the program(s):
 - Download the repo
 - Ensure you have python 2 or 3 installed
-- Run ```python[x] battleship.py``` or ```python[x] class_based_battleship.py```, where x can either be "" (nothing) or "3" (for python 3)
+- Run ```python[x] battleship.py``` or ```python[x] class_based_battleship.py```, where ```x``` can either be ```""``` (nothing) or ```3``` (for python 3)
 - Enjoy!
