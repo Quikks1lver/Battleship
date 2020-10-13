@@ -225,7 +225,7 @@ while player_lives > 0 and ai_lives > 0:
         print_boards(player_board, ai_board)
     turn += 1
 
-# Print winner of the game.
+# Prints winner of the game.
 if player_lives == 0:
     print_winner("ai", ai_goals)
 else:
