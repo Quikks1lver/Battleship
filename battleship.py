@@ -135,10 +135,19 @@ def set_up_all_ships(b, fleet):
 # Gets user input for coordinates. Subtracts 1 from raw input because of how arrays'
 # indices work in Python (0-9 rather than 1-10).
 def get_input_from_player():
-    temp_row = int(input())
-    temp_col = int(input())
-    temp_row -= 1
-    temp_col -= 1
+    success = False
+    
+    while not success:
+        try:
+            temp_row = int(input())
+            temp_col = int(input())
+            temp_row -= 1
+            temp_col -= 1
+            
+            success = True
+        except:
+            print("Invalid input, Admiral. Try again.")
+
     return temp_row, temp_col
 
 # Gets random input from ai.
@@ -198,7 +207,7 @@ ai_goals = get_new_board()
 print_boards(player_board, ai_board)
 print("***OBJECTIVE***: You must sink the enemy fleet using skill and some guessing. Good luck, admiral!")
 
-# Randomly sets up ships, for both the player and the ai.
+# Randomly set up ships, for both the player and the ai.
 set_up_all_ships(player_goals, ai_ship_to_length)
 set_up_all_ships(ai_goals, player_ship_to_length)
 
@@ -225,7 +234,7 @@ while player_lives > 0 and ai_lives > 0:
         print_boards(player_board, ai_board)
     turn += 1
 
-# Prints winner of the game.
+# Print winner of the game.
 if player_lives == 0:
     print_winner("ai", ai_goals)
 else:

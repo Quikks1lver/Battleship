@@ -123,10 +123,19 @@ def set_up_all_ships(b, fleet):
 # Gets user input for coordinates. Subtracts 1 from raw input because of how arrays'
 # indices work in Python (0-9 rather than 1-10).
 def get_input_from_player():
-    temp_row = int(input())
-    temp_col = int(input())
-    temp_row -= 1
-    temp_col -= 1
+    success = False
+    
+    while not success:
+        try:
+            temp_row = int(input())
+            temp_col = int(input())
+            temp_row -= 1
+            temp_col -= 1
+            
+            success = True
+        except:
+            print("Invalid input, Admiral. Try again.")
+
     return temp_row, temp_col
 
 # Gets random input from ai.
