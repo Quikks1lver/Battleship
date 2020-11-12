@@ -8,3 +8,5 @@ To run the program(s):
 - [Ensure you have python 2 or 3 installed](https://www.python.org/downloads/)
 - Run ```python[x] battleship.py``` or ```python[x] class_based_battleship.py```, where ```x``` can either be ```""``` (nothing) or ```3``` (for python 3)
 - Enjoy!
+
+*P.S.: This was my first real foray into a substantial python program, as well as my first personal project, so I have a special place in my heart for this program. =]*
